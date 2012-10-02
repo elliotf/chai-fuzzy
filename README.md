@@ -6,7 +6,7 @@ Make assertions that values have all the same attributes and values without asse
 
 ## Using
 
-Also see the [tests](https://github.com/elliotf/chai-fuzzy/test/) and [examples](https://github.com/elliotf/examples/).
+Also see the [tests](https://github.com/elliotf/chai-fuzzy/tree/master/test/) and [examples](https://github.com/elliotf/chai-fuzzy/tree/master/examples/).
 
 ### browser-side
 
