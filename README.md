@@ -4,6 +4,8 @@ Fuzzy matchers for chai based on underscore and inspired by jasmine.
 
 Make assertions that values have all the same attributes and values without asserting strict object equality.
 
+[![Build Status](https://travis-ci.org/elliotf/chai-fuzzy.png)](https://travis-ci.org/elliotf/chai-fuzzy)
+
 ## Using
 
 Also see the [tests](https://github.com/elliotf/chai-fuzzy/tree/master/test/) and [examples](https://github.com/elliotf/chai-fuzzy/tree/master/examples/).
