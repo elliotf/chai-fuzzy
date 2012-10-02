@@ -94,6 +94,19 @@
             this.similar.should.not.equal(this.dissimilar);
           });
 
+          it("fails if either subject or expected has more values", function() {
+            var more = ['a', 'b'];
+            var less = ['a'];
+
+            (function(){
+              more.should.be.like(less);
+            }).should.fail("expected " + inspect(more) + " to be like " + inspect(less));
+
+            (function(){
+              less.should.be.like(more);
+            }).should.fail("expected " + inspect(less) + " to be like " + inspect(more));
+          });
+
           makeAssertions();
         });
 
@@ -110,6 +123,24 @@
             this.similar.should.not.equal(this.dissimilar);
           });
 
+          it("fails if either subject or expected has more values", function() {
+            var more = {
+                a: 'a'
+              , b: 'b'
+            };
+            var less = {
+              a: 'a'
+            };
+
+            (function(){
+              more.should.be.like(less);
+            }).should.fail("expected " + inspect(more) + " to be like " + inspect(less));
+
+            (function(){
+              less.should.be.like(more);
+            }).should.fail("expected " + inspect(less) + " to be like " + inspect(more));
+          });
+
           makeAssertions();
         });
 
@@ -119,8 +150,6 @@
             this.similar = 'a is for alpha';
             this.dissimilar = 'a is for avocado';
           });
-
-          //debugger;
 
           makeAssertions();
         });
