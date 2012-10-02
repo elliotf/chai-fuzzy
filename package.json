@@ -1,6 +1,7 @@
 {
   "name": "chai-fuzzy",
   "version": "1.0.0",
+  "keywords": ["chai", "testing", "jasmine"],
   "description": "fuzzy matchers for chai",
   "main": "index.js",
   "scripts": {
