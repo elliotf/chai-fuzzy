@@ -33,8 +33,6 @@
     _ = window._;
   }
 
-
-
   // contain => _.where, check _.isEqual
   // containOnce => contain, check size of returned array
   // like => _.isEqual
@@ -46,6 +44,18 @@
       , "expected #{this} to be like #{exp}"
       , "expected #{this} not to be like #{exp}"
       , expected
+    )
+  });
+
+  chai.Assertion.addMethod('jsonOf', function(expected){
+    var obj            = this._obj;
+    var expectedAsJSON = JSON.parse(JSON.stringify(expected));
+
+    this.assert(
+      _.isEqual(obj, expectedAsJSON)
+      , "expected #{this} to be like JSON #{exp}"
+      , "expected #{this} not to be like JSON #{exp}"
+      , expectedAsJSON
     )
   });
 

@@ -55,6 +55,82 @@
     });
 
     describe("matchers", function() {
+      describe(".json", function() {
+        beforeEach(function() {
+          var writtenMS = 1349631491728;
+          this.apple = {
+            isFruit: true
+            , skin: 'thin'
+            , colors: ['red', 'green', 'yellow']
+            , picked: new Date(writtenMS)
+          };
+          this.pear = {
+            isFruit: true
+            , skin: 'thin'
+            , colors: ['red', 'green', 'yellow']
+            , picked: new Date(writtenMS)
+          };
+          this.orange = {
+            isFruit: true
+            , skin: 'thick'
+            , colors: ['orange']
+            , picked: new Date(writtenMS)
+          };
+
+          this.appleJSON  = JSON.parse(JSON.stringify(this.apple));
+          this.pearJSON   = JSON.parse(JSON.stringify(this.pear));
+          this.orangeJSON = JSON.parse(JSON.stringify(this.orange));
+        });
+
+        describe("when given two objects that JSON stringify to similiar results", function() {
+          it("passes", function() {
+            this.appleJSON.should.be.jsonOf(this.pear);
+            this.pearJSON.should.be.jsonOf(this.apple);
+          });
+
+          describe("when negated", function() {
+            it("fails", function() {
+              var self = this;
+
+              (function(){
+                self.appleJSON.should.not.be.jsonOf(self.pear);
+              }).should.fail(
+                "expected " + inspect(self.appleJSON) + " not to be like JSON " + inspect(self.pearJSON)
+              );
+              (function(){
+                self.pearJSON.should.not.be.jsonOf(self.apple);
+              }).should.fail(
+                "expected " + inspect(self.pearJSON) + " not to be like JSON " + inspect(self.appleJSON)
+              );
+            });
+          });
+        });
+
+        describe("when given two objects that JSON stringify to dissimilar results", function() {
+          it("should fail", function() {
+              var self = this;
+
+              (function(){
+                self.appleJSON.should.be.jsonOf(self.orange);
+              }).should.fail(
+                "expected " + inspect(self.appleJSON) + " to be like JSON " + inspect(self.orangeJSON)
+              );
+              (function(){
+                self.orangeJSON.should.be.jsonOf(self.apple);
+              }).should.fail(
+                "expected " + inspect(self.orangeJSON) + " to be like JSON " + inspect(self.appleJSON)
+              );
+          });
+
+          describe("when negated", function() {
+            it("passes", function() {
+              this.orange.should.not.be.jsonOf(this.apple);
+              this.apple.should.not.be.jsonOf(this.orange);
+            });
+          });
+        });
+      });
+
       describe(".like", function() {
         describe("when given mixed types", function() {
           var subjectObj, subjectArr;

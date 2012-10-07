@@ -82,6 +82,27 @@ check the first level of the container for a value like the one provided
 
     // same for arrays
 
+# jsonOf(value)
+
+check that the given javascript object is like the JSON-ified expected value.  Useful for checking stringification and parsing of an object.
+
+    var apple = {
+      skin: 'thin'
+      , colors: ['red', 'green', 'yellow']
+      , isFruit: true
+      , picked: new Date()
+    };
+    var orange = {
+      skin: 'thin'
+      , colors: ['red', 'green', 'yellow']
+      , isFruit: true
+      , picked: new Date()
+    };
+    // here appleJSON would be the json result of some process like a JSON api
+    var appleJSON  = JSON.parse(JSON.stringify(apple));
+    appleJSON.should.be.jsonOf(apple);
+    appleJSON.should.not.be.jsonOf(orange);
+
 # Thanks
 
 Thanks to [Davis](http://github.com/infews/ "Davis") for passing along the idea of using underscore rather than cribbing parts of jasmine.
