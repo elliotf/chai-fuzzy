@@ -44,6 +44,8 @@
       , "expected #{this} to be like #{exp}"
       , "expected #{this} not to be like #{exp}"
       , expected
+      , obj
+      , true
     )
   });
 
@@ -56,6 +58,8 @@
       , "expected #{this} to be like JSON #{exp}"
       , "expected #{this} not to be like JSON #{exp}"
       , expectedAsJSON
+      , obj
+      , true
     )
   });
 
