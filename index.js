@@ -76,12 +76,12 @@
       )
     }
 
-    var found = _obj.filter(function(needle){
+    var found = _obj.some(function(needle){
       return _.isEqual(needle,expected);
     });
 
     this.assert(
-      found.length
+      found
       , "expected #{this} to contain one thing like #{exp}"
       , "expected #{this} not to contain one thing like #{exp}"
       , expected
