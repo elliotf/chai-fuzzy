@@ -22,15 +22,14 @@
   var _;
 
   if (
-    typeof require === "function"
-    && typeof exports === "object"
-    && typeof module === "object"
+    typeof window === "object"
+    && typeof window._ == "function"
   ) {
-    // server-side
-    _ = require('underscore');
-  } else {
     // browser-side
     _ = window._;
+  } else {
+    // server-side
+    _ = require('underscore');
   }
 
   // contain => _.where, check _.isEqual
