@@ -17,6 +17,7 @@
 }(function(chai, testingServer){
 
   var should = chai.should();
+  var assert = chai.assert;
 
   describe("chai-fuzzy", function() {
     if (testingServer) {
@@ -463,6 +464,47 @@
             });
           });
         }
+      });
+    });
+
+    describe("tdd alias", function() {
+      var objValue, objLike, objNotLike, objSub, objNotSub;
+
+      before(function(){
+        objValue = {a:1, b:2, c:[1,2,3]};
+        objLike = {c:[1,2,3], b:2, a:1};
+        objNotLike = {a:11, b:22, c:33};
+        objSub = [1,2,3];
+        objNotSub = [4,3,1];
+      });
+
+      //basic integrity checks
+
+      it(".like", function() {
+        assert.like(objValue, objLike ,'tdd');
+        objValue.should.be.like(objLike, 'bdd');
+      });
+      it(".notLike", function() {
+        assert.notLike(objValue, objNotLike ,'tdd');
+        objValue.should.not.be.like(objNotLike, 'bdd');
+      });
+
+      it(".jsonOf", function() {
+        assert.jsonOf(objValue, objLike ,'tdd');
+        objValue.should.be.jsonOf(objLike, 'bdd');
+      });
+      it(".notJsonOf", function() {
+        assert.notJsonOf(objValue, objNotLike ,'tdd');
+        objValue.should.not.be.jsonOf(objNotLike, 'bdd');
+      });
+
+      it(".containOneLike", function() {
+        assert.containOneLike(objValue, objSub ,'tdd');
+        objValue.should.containOneLike(objSub, 'bdd');
+      });
+      it(".notContainOneLike", function() {
+        assert.notContainOneLike(objValue, objNotLike ,'tdd');
+        objValue.should.not.containOneLike(objNotLike, 'bdd');
       });
     });
   });
