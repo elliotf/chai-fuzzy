@@ -86,4 +86,25 @@
       , expected
     )
   });
+
+  //export tdd style
+  var assert = chai.assert;
+  assert.like = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.like(exp);
+  };
+  assert.notLike = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.like(exp);
+  };
+  assert.containOneLike = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.containOneLike(exp);
+  };
+  assert.notContainOneLike = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.containOneLike(exp);
+  };
+  assert.jsonOf = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.jsonOf(exp);
+  };
+  assert.notJsonOf = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.jsonOf(exp);
+  };
 }));

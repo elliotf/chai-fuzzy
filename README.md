@@ -36,17 +36,27 @@ compare object attributes and values rather than checking to see if they're the 
     subject.should.be.like({a: 'a'});
     subject.should.not.be.like({x: 'x'});
     subject.should.not.be.like({a: 'a', b: 'b'});
+
     expect(subject).to.be.like({a: 'a'});
     expect(subject).not.to.be.like({x: 'x'});
     expect(subject).not.to.be.like({a: 'a', b: 'b'});
 
+    assert.like(subject, {a: 'a'});
+    assert.notLike(subject, {x: 'x'});
+    assert.notLike(subject, {a: 'a', b: 'b'});
+	
     var subject = ['a'];
     subject.should.be.like(['a']);
     subject.should.not.be.like(['x']);
     subject.should.not.be.like(['a', 'b']);
+
     expect(subject).to.be.like(['a']);
     expect(subject).not.to.be.like(['x']);
     expect(subject).not.to.be.like(['a', 'b']);
+
+    assert.like(subject, ['a']);
+    assert.notLike(subject, ['x']);
+    assert.notLike(subject, ['a', 'b']);
 
 ## containOneLike(value)
 
@@ -77,8 +87,15 @@ check the first level of the container for a value like the one provided
         'scales', 'fins', 'cream'
       ]
     });
+
     subject.should.containOneLike('xylophone');
     subject.should.not.containOneLike('cow patties');
+
+    expect(subject).to.containOneLike('xylophone');
+    expect(subject).to.not.containOneLike('cow patties');
+
+    assert.containOneLike(subject, 'xylophone');
+    assert.notContainOneLike(subject, 'cow patties');
 
     // same for arrays
 
@@ -100,8 +117,15 @@ check that the given javascript object is like the JSON-ified expected value.  U
     };
     // here appleJSON would be the json result of some process like a JSON api
     var appleJSON  = JSON.parse(JSON.stringify(apple));
+
     appleJSON.should.be.jsonOf(apple);
     appleJSON.should.not.be.jsonOf(orange);
+
+    expect(appleJSON).to.be.jsonOf(apple);
+    expect(appleJSON).to.not.be.jsonOf(orange);
+
+    assert.jsonOf(appleJSON, apple);
+    assert.notJsonOf(appleJSON, orange);
 
 # Thanks
 
