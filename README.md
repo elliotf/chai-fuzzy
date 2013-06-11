@@ -44,7 +44,7 @@ compare object attributes and values rather than checking to see if they're the 
     assert.like(subject, {a: 'a'});
     assert.notLike(subject, {x: 'x'});
     assert.notLike(subject, {a: 'a', b: 'b'});
-	
+
     var subject = ['a'];
     subject.should.be.like(['a']);
     subject.should.not.be.like(['x']);
@@ -130,4 +130,6 @@ check that the given javascript object is like the JSON-ified expected value.  U
 # Thanks
 
 Thanks to [Davis](http://github.com/infews/ "Davis") for passing along the idea of using underscore rather than cribbing parts of jasmine.
+
+Thanks to [Bart van der Schoor](https://github.com/Bartvds "Bart van der Schoor") for adding assert-style compatibility
 
