@@ -315,7 +315,14 @@
           objNeedle.should.not.equal(objDupe);
 
           arrContainer.should.not.contain(arrNeedle);
-          arrContainer.should.not.contain(objNeedle);
+          /*
+            http://stackoverflow.com/questions/28956295/estrange-behaviour-in-javascript-array-clone-equality-assertion:
+
+            arrContainer.should.not.contain(objNeedle); // fails
+            arrContainer.should.not.include(objNeedle); // fails
+            arrContainer.should.not.include.something.that.deep.equals(objNeedle); // fails
+          */
+          arrContainer[0].should.not.equal(objNeedle);
 
           objContainer.arr.should.not.equal(arrNeedle);
           objContainer.obj.should.not.equal(objNeedle);

@@ -1,7 +1,11 @@
 {
   "name": "chai-fuzzy",
   "version": "1.4.0",
-  "keywords": ["chai", "testing", "jasmine"],
+  "keywords": [
+    "chai",
+    "testing",
+    "jasmine"
+  ],
   "description": "fuzzy matchers for chai",
   "main": "index.js",
   "scripts": {
@@ -14,14 +18,15 @@
   "author": "Elliot Foster",
   "license": "MIT",
   "devDependencies": {
-    "chai": "~1",
-    "mocha": "~1",
-    "nodemon": "~0",
-    "underscore": "~1"
+    "chai": "^2.1.1",
+    "mocha": "^2.2.1",
+    "nodemon": "^1.3.7",
+    "underscore": "^1.8.2"
   },
   "peerDependencies": {
-    "chai": "~1",
-    "underscore": "~1"
+    "chai": "^2.1.1",
+    "mocha": "^2.2.1",
+    "nodemon": "^1.3.7"
   },
   "engines": {
     "npm": ">= 1.2"

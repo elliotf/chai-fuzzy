@@ -10,4 +10,5 @@ clean:
 install:
 	npm install
 
-.PHONY: clean install test testwatch
+# travis-cli build will fail if we try to run install or testwatch so we will only run test by default
+.PHONY: test
