@@ -56,7 +56,7 @@
     });
 
     describe("matchers", function() {
-      describe(".json", function() {
+      describe(".jsonOf", function() {
         beforeEach(function() {
           var writtenMS = 1349631491728;
           this.apple = {
@@ -165,12 +165,6 @@
             this.dissimilar = ['avocado'];
           });
 
-          it("has its tests set up correctly", function() {
-            this.subject.should.not.equal(this.similar);
-            this.subject.should.not.equal(this.dissimilar);
-            this.similar.should.not.equal(this.dissimilar);
-          });
-
           it("fails if either subject or expected has more values", function() {
             var more = ['a', 'b'];
             var less = ['a'];
@@ -192,12 +186,6 @@
             this.subject = {a: 'alpha'};
             this.similar = {a: 'alpha'};
             this.dissimilar = {a: 'avocado'};
-          });
-
-          it("has its tests set up correctly", function() {
-            this.subject.should.not.equal(this.similar);
-            this.subject.should.not.equal(this.dissimilar);
-            this.similar.should.not.equal(this.dissimilar);
           });
 
           it("fails if either subject or expected has more values", function() {
@@ -308,24 +296,6 @@
           objMissing = {missing: 'chan'}
           strMissing = 'chan';
 
-        });
-
-        it("has its test set up correctly", function() {
-          arrNeedle.should.not.equal(arrDupe);
-          objNeedle.should.not.equal(objDupe);
-
-          arrContainer.should.not.contain(arrNeedle);
-          /*
-            http://stackoverflow.com/questions/28956295/estrange-behaviour-in-javascript-array-clone-equality-assertion:
-
-            arrContainer.should.not.contain(objNeedle); // fails
-            arrContainer.should.not.include(objNeedle); // fails
-            arrContainer.should.not.include.something.that.deep.equals(objNeedle); // fails
-          */
-          arrContainer[0].should.not.equal(objNeedle);
-
-          objContainer.arr.should.not.equal(arrNeedle);
-          objContainer.obj.should.not.equal(objNeedle);
         });
 
         describe("when given unsupported containers", function() {
